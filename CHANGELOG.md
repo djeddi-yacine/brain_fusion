@@ -13,3 +13,7 @@ fixes for pub point
 ## 0.0.4
 
 fixes for pub point
+
+## 0.0.5
+
+fixes for pub point

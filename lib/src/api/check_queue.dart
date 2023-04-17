@@ -21,12 +21,9 @@ class CheckQueue {
       'Sec-Fetch-Dest': 'empty',
       'Sec-Fetch-Mode': 'cors',
       'Sec-Fetch-Site': 'same-origin',
-      'User-Agent':
-          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
-      'sec-ch-ua':
-          '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
+      'User-Agent': userAgent,
+      'sec-ch-ua': secChUa,
     };
-
     final response = await client.get(url, headers: headers);
 
     if (response.statusCode == 200) {

@@ -2,7 +2,6 @@
 ![Image](https://fusionbrain.ai/static/fusion/meta/cover.png)
 
 ##### Fusion Brain AI is a new AI art generation tool that can crate amazing images form just text prompt. Fusion Brain AI can also make variations of your existing image.
-#
 ## Features
 - ##### Generate Images from Text
 - ##### High Quality
@@ -16,17 +15,14 @@
 ## Installation
 
 ##### First Import The Package :
-#
 ```dart
 import 'package:brain_fusion/brain_fusion.dart';
 ```
 ##### Then init the AI class:
-#
 ```dart
   final AI ai = AI();
 ```
 ##### Get the Image as Uint8List (PNG Format):
-#
 ```dart
   Future<Uint8List> generate(String query) async {
     // Call the runAI method with the required parameters
@@ -35,7 +31,6 @@ import 'package:brain_fusion/brain_fusion.dart';
   }
   ```
 ##### Display The Image With:
-#
 ```dart
     @override
 Widget build(BuildContext context) {

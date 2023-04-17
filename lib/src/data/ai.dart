@@ -8,6 +8,8 @@ import '../api/run.dart';
 import '../api/status.dart';
 import 'webkit_generator.dart';
 
+/// init this class in any Widget
+/// to use the [runAI] function
 class AI {
   late http.Client client;
   late WebKit webKit;
@@ -25,7 +27,21 @@ class AI {
     status = Status(client: client);
     entities = Entities(client: client);
   }
-  Future<Uint8List> runAI(String query, AIStyle style) async {
+
+  /// Use this function to make the image .
+  ///
+  /// It required Two parameter the
+  /// [query] an [AIStyle] .
+  ///
+  /// [query] is String text and
+  /// [AIStyle] is a style of the image that you want.
+  ///
+  /// The [runAI] function return a [Uint8List]
+  /// so it can be use in both dart and Flutter.
+  Future<Uint8List> runAI(
+    String query,
+    AIStyle style,
+  ) async {
     try {
       final bool checker = await checkQueue.checkQueue();
       if (checker) {
@@ -67,7 +83,8 @@ class AI {
     }
   }
 }
-
+/// The [AIStyle] is enum for Famous Styles of Drawing
+///
 enum AIStyle {
   noStyle,
   anime,

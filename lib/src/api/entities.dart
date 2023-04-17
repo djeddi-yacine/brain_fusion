@@ -1,3 +1,4 @@
+/// Importing required libraries
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -5,18 +6,21 @@ import 'package:http/http.dart' as http;
 
 import '../data/strings.dart';
 
-///The [Entities] class for return the Png Code
+/// The [Entities] class is responsible for returning the PNG code
 class Entities {
-  ///get Client form [AI]
+  /// HTTP client for making requests
   final http.Client client;
+
+  /// Constructor for the [Entities] class
   Entities({required this.client});
 
-  ///the [getEntities] unction to return the [Uint8List] of the png
+  /// The [getEntities] function is used to get the [Uint8List] of the PNG
+  /// [id] - the ID of the PNG to get
   Future<Uint8List> getEntities(String id) async {
-    ///Create Uri apiUrl
+    /// Create the URL for the API endpoint
     final Uri apiUrl = Uri.parse('$pocketsAPI/$id/entities');
 
-    ///Create Map of headers
+    /// Create the headers for the HTTP request
     final headers = {
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.9,en-GB;q=0.8',
@@ -32,23 +36,27 @@ class Entities {
       'sec-ch-ua': secChUa,
     };
 
-    ///await the response
+    /// Make the HTTP request to the API
     final response = await client.get(apiUrl, headers: headers);
+
+    /// Check the response status code
     if (response.statusCode == 200) {
-      ///Decode the body
+      /// Decode the response body from JSON
       final jsonResponse = jsonDecode(response.body);
 
-      ///get the data
+      /// Get the PNG data from the response
       final png = jsonResponse['result'][0]['response'][0];
 
-      ///decode the code
+      /// Decode the PNG code into bytes
       final bytes = base64.decode("$png");
 
-      ///return the bytes
+      /// Return the bytes of the PNG
       return bytes;
     } else if (response.statusCode != 200) {
-      throw Exception('entities code : ${response.statusCode}');
+      /// Throw an exception if the response status code is not 200
+      throw Exception('entities code: ${response.statusCode}');
     } else {
+      /// Throw an exception if there was a failure to fetch the status
       throw Exception('Failed to fetch status');
     }
   }

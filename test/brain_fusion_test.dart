@@ -1,18 +1,22 @@
+/// Import the necessary packages for the test
 import 'package:brain_fusion/brain_fusion.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-///The [main] function
+/// The main function that runs the test
 void main() {
-  ///the test function
+  /// The test function that generates an image from a query using the AI model
   test('generate image', () async {
     /// Create an instance of the AI class
     AI ai = AI();
 
-    /// Call the runAI method with the required parameters
+    /// Define the query and AI style
     String query = 'sukuna from jujutsu kaisen';
+    AIStyle style = AIStyle.anime;
+
     try {
-      Uint8List image = await ai.runAI(query, AIStyle.anime);
+      /// Call the runAI method with the required parameters
+      Uint8List image = await ai.runAI(query, style);
 
       /// Use the returned image data as needed
       if (kDebugMode) {
@@ -26,3 +30,8 @@ void main() {
     }
   });
 }
+
+/// This test ensures that the AI model is able to generate an image from a query
+/// It creates an instance of the AI class and calls the runAI method with a query and AI style
+/// It then checks that an image is returned and prints the image data if in debug mode
+/// If an error occurs during AI processing, it is caught and printed if in debug mode.

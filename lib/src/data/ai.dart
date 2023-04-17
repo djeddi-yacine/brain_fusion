@@ -9,8 +9,12 @@ import '../api/status.dart';
 import 'enums.dart';
 import 'webkit_generator.dart';
 
-/// init this class in any Widget
-/// to use the [runAI] function
+/// The [AI] class is used to create an instance that can be used to make images by calling the [runAI] function.
+///
+/// It imports necessary libraries and files from the project's API folder.
+///
+/// The class has a late initialization of several instance members, including a [http.Client] instance, a [WebKit] instance, and instances of [CheckQueue], [Run], [Status], and [Entities] classes.
+///
 class AI {
   /// late the [http.Client]
   late http.Client _client;
@@ -30,6 +34,8 @@ class AI {
   /// late the [Entities]
   late Entities _entities;
 
+  /// The constructor initializes the instance members with their respective classes or functions using the client instance member.
+  ///
   AI() {
     /// Initialize the client instance member
     _client = http.Client();
@@ -50,16 +56,13 @@ class AI {
     _entities = Entities(client: _client);
   }
 
-  /// Use this function to make the image .
+  /// The [runAI] function is used to create the image, and it requires two parameters: [query], which is the text to be converted into an image, and [AIStyle], which is an enum representing the desired style of the image.
   ///
-  /// It required Two parameter the
-  /// [query] an [AIStyle] .
+  /// The function returns a [Uint8List], which can be used in both Dart and Flutter.
   ///
-  /// [query] is String text and
-  /// [AIStyle] is a style of the image that you want.
+  /// The function first calls the [checkQueue] function of the [CheckQueue] instance member to check the queue. If the queue is not busy, the [run] function of the [Run] instance member is called with the [query] and [AIStyle] parameters. After this, the [getStatus] function of the [Status] instance member is called in a loop to check the status of the image generation process until it is completed. Finally, the [getEntities] function of the [Entities] instance member is called to retrieve the image data and return it as a [Uint8List].
   ///
-  /// The [runAI] function return a [Uint8List]
-  /// so it can be use in both dart and Flutter.
+  /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
   Future<Uint8List> runAI(
     String query,
     AIStyle style,
@@ -91,22 +94,27 @@ class AI {
               /// return the Data
               return image;
             } else {
+              /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
               _client.close();
               throw Exception('Failed to get status (2) from AI');
             }
           } else {
+            /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
             _client.close();
             throw Exception('Failed to get status (1) from AI');
           }
         } else {
+          /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
           _client.close();
           throw Exception('Failed to run AI');
         }
       } else {
+        /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
         _client.close();
         throw Exception('Failed to check queue in AI');
       }
     } catch (e) {
+      /// If any error occurs during this process, an exception is thrown, and the client instance member is closed.
       _client.close();
       throw Exception('Error from AI package: $e');
     }

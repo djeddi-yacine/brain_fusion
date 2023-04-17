@@ -1,30 +1,34 @@
 import 'dart:math';
 
-///[WebKit] class is for Generate new webkit token
-///with help of dart:math
+/// A class for generating new WebKit tokens.
 class WebKit {
-  /// Generate a random string of specified length
+  /// Generates a random string of the specified [length].
+  ///
+  /// This method uses the `dart:math` library to generate a list of code units
+  /// representing ASCII lowercase letters. It then converts this list to a
+  /// string and returns the result.
+  ///
+  /// Throws an [ArgumentError] if [length] is less than or equal to zero.
   String _generateRandomString(int length) {
-    ///Create variable
+    if (length <= 0) {
+      throw ArgumentError('Length must be greater than zero');
+    }
+
     var random = Random();
-
-    ///Create variable
     var codeUnits = List.generate(length, (index) => random.nextInt(26) + 97);
-
-    /// ASCII lowercase letters
-    /// return new code
     return String.fromCharCodes(codeUnits);
   }
 
-  /// Generate a boundary string for multipart/form-data request
+  /// Generates a boundary string for a multipart/form-data request.
+  ///
+  /// The boundary string is used to separate different parts of a
+  /// multipart/form-data request. It consists of a timestamp and a randomly
+  /// generated string.
+  ///
+  /// Returns a string in the format `"----timestamprandomString----"`.
   String generateBoundaryString() {
-    ///Create variable
     var timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-
-    ///Create variable
     var randomString = _generateRandomString(16);
-
-    ///return the new webkit
     return '----$timestamp$randomString----';
   }
 }

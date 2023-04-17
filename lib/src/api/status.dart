@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../strings.dart';
+import '../data/strings.dart';
 
 ///the [Status] class is for Check the Status of the Query
 class Status {

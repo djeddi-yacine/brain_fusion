@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:brain_fusion/brain_fusion.dart';
 import 'package:http/http.dart' as http;
 
-import '../strings.dart';
+import '../data/enums.dart';
+import '../data/strings.dart';
 
 ///the [Run] class is for Start the Generation Process
 class Run {

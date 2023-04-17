@@ -6,35 +6,48 @@ import '../api/entities.dart';
 import '../api/check_queue.dart';
 import '../api/run.dart';
 import '../api/status.dart';
+import 'enums.dart';
 import 'webkit_generator.dart';
 
 /// init this class in any Widget
 /// to use the [runAI] function
 class AI {
+  /// late the [http.Client]
   late http.Client _client;
-  late WebKit webKit;
-  late CheckQueue checkQueue;
-  late Run run;
-  late Status status;
-  late Entities entities;
+
+  /// late the [WebKit]
+  late WebKit _webKit;
+
+  /// late the [CheckQueue]
+  late CheckQueue _checkQueue;
+
+  /// late the [Run]
+  late Run _run;
+
+  /// late the [Status]
+  late Status _status;
+
+  /// late the [Entities]
+  late Entities _entities;
+
   AI() {
     /// Initialize the client instance member
     _client = http.Client();
 
     /// Initialize the class
-    webKit = WebKit();
+    _webKit = WebKit();
 
     /// Initialize the classes with the client instance member
-    checkQueue = CheckQueue(client: _client);
+    _checkQueue = CheckQueue(client: _client);
 
     /// Initialize the classes with the client instance member and pass the [generateBoundaryString] function
-    run = Run(client: _client, webKit: webKit.generateBoundaryString());
+    _run = Run(client: _client, webKit: _webKit.generateBoundaryString());
 
     /// Initialize the classes with the client instance member
-    status = Status(client: _client);
+    _status = Status(client: _client);
 
     /// Initialize the classes with the client instance member
-    entities = Entities(client: _client);
+    _entities = Entities(client: _client);
   }
 
   /// Use this function to make the image .
@@ -53,29 +66,29 @@ class AI {
   ) async {
     try {
       /// Run First Endpoint and Check
-      final bool checker = await checkQueue.checkQueue();
+      final bool checker = await _checkQueue.checkQueue();
       if (checker) {
         /// Run Second Endpoint
-        await run.run(query, style);
-        bool isSuccess = run.success;
-        String pocketId = run.pocketId;
+        await _run.run(query, style);
+        bool isSuccess = _run.success;
+        String pocketId = _run.pocketId;
         if (isSuccess) {
           String result = 'PROCESSING';
 
           /// Run 3rd Endpoint
           while (result == 'PROCESSING') {
             await Future.delayed(const Duration(milliseconds: 500));
-            await status.getStatus(pocketId);
-            result = status.result;
+            await _status.getStatus(pocketId);
+            result = _status.result;
           }
           if (result != 'PROCESSING') {
-            await status.getStatus(pocketId);
-            bool isLoaded = status.success;
+            await _status.getStatus(pocketId);
+            bool isLoaded = _status.success;
             if (isLoaded) {
               /// Run 4th Endpoint
-              final image = await entities.getEntities(pocketId);
+              final image = await _entities.getEntities(pocketId);
 
-              /// Run the Data
+              /// return the Data
               return image;
             } else {
               _client.close();
@@ -98,33 +111,4 @@ class AI {
       throw Exception('Error from AI package: $e');
     }
   }
-}
-
-/// The [AIStyle] is enum for Famous Styles of Drawing
-///
-enum AIStyle {
-  noStyle,
-  anime,
-  moreDetails,
-  islamic,
-  cyberPunk,
-  kandinskyPainter,
-  aivazovskyPainter,
-  malevichPainter,
-  picassoPainter,
-  goncharovaPainter,
-  classicism,
-  renaissance,
-  oilPainting,
-  pencilDrawing,
-  digitalPainting,
-  medievalStyle,
-  render3D,
-  cartoon,
-  studioPhoto,
-  portraitPhoto,
-  mosaic,
-  iconography,
-  khokhlomaPainter,
-  christmas,
 }

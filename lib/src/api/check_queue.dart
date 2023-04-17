@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../strings.dart';
+import '../data/strings.dart';
 
 /// The [CheckQueue] class is the First Checker
 class CheckQueue {

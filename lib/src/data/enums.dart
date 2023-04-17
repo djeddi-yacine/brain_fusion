@@ -1,0 +1,28 @@
+/// The [AIStyle] is enum for Famous Styles of Drawing
+///
+enum AIStyle {
+  noStyle,
+  anime,
+  moreDetails,
+  islamic,
+  cyberPunk,
+  kandinskyPainter,
+  aivazovskyPainter,
+  malevichPainter,
+  picassoPainter,
+  goncharovaPainter,
+  classicism,
+  renaissance,
+  oilPainting,
+  pencilDrawing,
+  digitalPainting,
+  medievalStyle,
+  render3D,
+  cartoon,
+  studioPhoto,
+  portraitPhoto,
+  mosaic,
+  iconography,
+  khokhlomaPainter,
+  christmas,
+}

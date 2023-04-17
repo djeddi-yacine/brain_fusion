@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 
-import '../strings.dart';
+import '../data/strings.dart';
 
 ///The [Entities] class for return the Png Code
 class Entities {

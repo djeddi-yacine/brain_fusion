@@ -5,7 +5,7 @@
 #
 ## Features
 - ##### Generate Images from Text
-- ##### hight Quality
+- ##### High Quality
 - ##### More Then 10 Style
 
 ## How it work !
@@ -36,8 +36,10 @@ import 'package:brain_fusion/brain_fusion.dart';
   ```
 ##### Display The Image With:
 #
-```
-    FutureBuilder<Uint8List>(
+```dart
+    @override
+Widget build(BuildContext context) {
+  return FutureBuilder<Uint8List>(
     // Call the generate() function to get the image data
       future: generate('YOUR TEXT'), 
       builder: (context, snapshot) {
@@ -56,7 +58,8 @@ import 'package:brain_fusion/brain_fusion.dart';
           return Container();
         }
       },
-    )
+    );
+}
   ```
 - ##### See The Test in example App
 ## License

@@ -17,3 +17,7 @@ fixes for pub point
 ## 0.0.5
 
 fixes for pub point
+
+## 0.0.6
+
+fixes http.Client error

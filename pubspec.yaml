@@ -1,6 +1,6 @@
 name: brain_fusion
 description: Fusion Brain AI is a new AI art generation tool that can create amazing images form just text prompt.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/dj-yacine-flutter/brain_fusion
 
 environment:

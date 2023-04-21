@@ -37,23 +37,8 @@ class AI {
   /// The constructor initializes the instance members with their respective classes or functions using the client instance member.
   ///
   AI() {
-    /// Initialize the client instance member
-    _client = http.Client();
-
     /// Initialize the class
     _webKit = WebKit();
-
-    /// Initialize the classes with the client instance member
-    _checkQueue = CheckQueue(client: _client);
-
-    /// Initialize the classes with the client instance member and pass the [generateBoundaryString] function
-    _run = Run(client: _client, webKit: _webKit.generateBoundaryString());
-
-    /// Initialize the classes with the client instance member
-    _status = Status(client: _client);
-
-    /// Initialize the classes with the client instance member
-    _entities = Entities(client: _client);
   }
 
   /// The [runAI] function is used to create the image, and it requires two parameters: [query], which is the text to be converted into an image, and [AIStyle], which is an enum representing the desired style of the image.
@@ -68,15 +53,30 @@ class AI {
     AIStyle style,
   ) async {
     try {
+      /// Initialize the client instance member
+      _client = http.Client();
+
+      /// Initialize the classes with the client instance member
+      _checkQueue = CheckQueue(client: _client);
+
       /// Run First Endpoint and Check
       final bool checker = await _checkQueue.checkQueue();
       if (checker) {
+        /// Initialize the classes with the client instance member and pass the [generateBoundaryString] function
+        _run = Run(
+          client: _client,
+          webKit: _webKit.generateBoundaryString(),
+        );
+
         /// Run Second Endpoint
         await _run.run(query, style);
         bool isSuccess = _run.success;
         String pocketId = _run.pocketId;
         if (isSuccess) {
           String result = 'PROCESSING';
+
+          /// Initialize the classes with the client instance member
+          _status = Status(client: _client);
 
           /// Run 3rd Endpoint
           while (result == 'PROCESSING') {
@@ -88,6 +88,9 @@ class AI {
             await _status.getStatus(pocketId);
             bool isLoaded = _status.success;
             if (isLoaded) {
+              /// Initialize the classes with the client instance member
+              _entities = Entities(client: _client);
+
               /// Run 4th Endpoint
               final image = await _entities.getEntities(pocketId);
 

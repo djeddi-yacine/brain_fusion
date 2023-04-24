@@ -73,18 +73,18 @@ class AI {
         bool isSuccess = _run.success;
         String pocketId = _run.pocketId;
         if (isSuccess) {
-          String result = 'PROCESSING';
+          String result = '';
 
           /// Initialize the classes with the client instance member
           _status = Status(client: _client);
 
           /// Run 3rd Endpoint
-          while (result == 'PROCESSING') {
-            await Future.delayed(const Duration(milliseconds: 500));
+          while (result != 'SUCCESS') {
+            await Future.delayed(const Duration(milliseconds: 200));
             await _status.getStatus(pocketId);
             result = _status.result;
           }
-          if (result != 'PROCESSING') {
+          if (result == 'SUCCESS') {
             await _status.getStatus(pocketId);
             bool isLoaded = _status.success;
             if (isLoaded) {

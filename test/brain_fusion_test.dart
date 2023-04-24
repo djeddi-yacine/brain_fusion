@@ -1,7 +1,8 @@
 /// Import the necessary packages for the test
+import 'dart:typed_data';
+
 import 'package:brain_fusion/brain_fusion.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/scaffolding.dart';
 
 /// The main function that runs the test
 void main() {
@@ -19,14 +20,10 @@ void main() {
       Uint8List image = await ai.runAI(query, style);
 
       /// Use the returned image data as needed
-      if (kDebugMode) {
-        print(image);
-      }
+      print(image);
     } catch (e) {
       /// Handle any exceptions that may occur during AI processing
-      if (kDebugMode) {
-        print('Error from AI package: $e');
-      }
+      print('Error from AI package: $e');
     }
   });
 }

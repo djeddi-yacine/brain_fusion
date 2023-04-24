@@ -21,3 +21,7 @@ fixes for pub point
 ## 0.0.6
 
 fixes http.Client error
+
+## 0.0.7
+
+make it for both Flutter and Dart

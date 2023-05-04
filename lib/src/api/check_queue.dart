@@ -1,5 +1,4 @@
 /// Import the required libraries
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../data/strings.dart';
 
@@ -37,14 +36,11 @@ class CheckQueue {
     };
 
     /// Send the GET request to the AI service
-    final response = await client.get(apiUrl, headers: headers);
+    final response = await client.head(apiUrl, headers: headers);
 
     if (response.statusCode == 200) {
-      ///Decode the response
-      final jsonResponse = json.decode(response.body);
-
       /// Return the boolean value indicating whether the queue is ready or not
-      final success = jsonResponse['success'] as bool;
+      final bool success = true;
 
       return success;
     } else if (response.statusCode != 200) {

@@ -25,3 +25,7 @@ fixes http.Client error
 ## 0.0.7
 
 make it for both Flutter and Dart
+
+## 0.0.8
+
+fix first response

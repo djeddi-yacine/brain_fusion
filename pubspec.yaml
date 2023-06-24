@@ -6,9 +6,9 @@ issue_tracker: https://github.com/dj-yacine-flutter/brain_fusion/issues
 version: 0.0.9
 
 topics:
-  - AI
-  - Image Generator
-  - Stable Diffusion
+  - ai
+  - image generator
+  - stable diffusion
 
 screenshots:
   - description: Example 01.

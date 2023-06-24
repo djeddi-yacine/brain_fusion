@@ -3,13 +3,30 @@ description: Fusion Brain AI is a new AI art generation tool that can create ama
 homepage: https://github.com/dj-yacine-flutter/brain_fusion
 repository: https://github.com/dj-yacine-flutter/brain_fusion
 issue_tracker: https://github.com/dj-yacine-flutter/brain_fusion/issues
-version: 0.0.8
+version: 0.0.9
+
+topics:
+  - AI
+  - Image Generator
+  - Stable Diffusion
+
+screenshots:
+  - description: Example 01.
+    path: screenshots/01.webp
+  - description: Example 02.
+    path: screenshots/02.webp
+  - description: Example 03.
+    path: screenshots/03.webp
+  - description: Example 04.
+    path: screenshots/04.webp
+  - description: Example 05.
+    path: screenshots/05.webp
 
 environment:
-  sdk: '>=2.19.5 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  http: ^0.13.6
+  http: ^1.0.0
 
 dev_dependencies:
   test: ^1.24.2

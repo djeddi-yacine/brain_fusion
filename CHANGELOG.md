@@ -29,3 +29,7 @@ make it for both Flutter and Dart
 ## 0.0.8
 
 fix first response
+
+## 0.0.9
+
+fix the new URL

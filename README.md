@@ -25,21 +25,19 @@ import 'package:brain_fusion/brain_fusion.dart';
 ##### Get the Image as Uint8List (PNG Format):
 ```dart
   Future<Uint8List> generate(String query) async {
-    // Call the runAI method with the required parameters
-    Uint8List image = await ai.runAI(query, AIStyle.anime);
+    final AI _ai = AI();
+    Uint8List image = await _ai.runAI(query, AIStyle.anime);
     return image;
   }
   ```
 ##### Display The Image With:
 ```dart
-    @override
-Widget build(BuildContext context) {
-  return FutureBuilder<Uint8List>(
-    // Call the generate() function to get the image data
+  Widget brainFusion() {
+    return FutureBuilder<Uint8List>(
+      // Call the generate() function to get the image data
       future: generate('YOUR TEXT'), 
       builder: (context, snapshot) {
-        if (snapshot.connectionState ==
-            ConnectionState.waiting) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           // While waiting for the image data, display a loading indicator
           return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
@@ -54,7 +52,7 @@ Widget build(BuildContext context) {
         }
       },
     );
-}
+  }
 ```
 - ##### See The Test in example App
 ## License

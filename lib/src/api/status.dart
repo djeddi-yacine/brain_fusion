@@ -25,15 +25,12 @@ class Status {
 
     /// The [headers] variable is a map holding the required headers for the request.
     final headers = {
-      'Accept': 'application/json, text/plain, */*',
+      'Accept': '*/*',
       'Accept-Language': 'en-US,en;q=0.9,en-GB;q=0.8',
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive',
-      'DNT': '1',
       'Pragma': 'no-cache',
       'Referer': referer,
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
       'Sec-Fetch-Site': 'same-origin',
       'User-Agent': userAgent,
       'sec-ch-ua': secChUa,

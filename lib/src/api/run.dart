@@ -199,18 +199,14 @@ class Run {
 
     /// This [headers] map is used to set the headers for the http request.
     final headers = {
-      'Accept': 'application/json, text/plain, */*',
+      'Accept': '*/*',
       'Accept-Language': 'en-US,en;q=0.9,en-GB;q=0.8',
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive',
       'Content-Type': 'multipart/form-data; boundary=$webKit',
-      'DNT': '1',
       'Origin': origin,
       'Pragma': 'no-cache',
       'Referer': referer,
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Site': 'same-origin',
       'User-Agent': userAgent,
       'sec-ch-ua': secChUa,
     };

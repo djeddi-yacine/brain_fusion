@@ -23,7 +23,7 @@ void main() {
       print(image);
     } catch (e) {
       /// Handle any exceptions that may occur during AI processing
-      print('Error from AI package: $e');
+      print(e);
     }
   });
 }

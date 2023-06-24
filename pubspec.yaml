@@ -7,8 +7,8 @@ version: 0.0.9
 
 topics:
   - ai
-  - image generator
-  - stable diffusion
+  - image-generator
+  - stable-diffusion
 
 screenshots:
   - description: Example 01.

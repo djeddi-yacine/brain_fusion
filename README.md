@@ -25,8 +25,7 @@ import 'package:brain_fusion/brain_fusion.dart';
 ##### Get the Image as Uint8List (PNG Format):
 ```dart
   Future<Uint8List> generate(String query) async {
-    final AI _ai = AI();
-    Uint8List image = await _ai.runAI(query, AIStyle.anime);
+    Uint8List image = await ai.runAI(query, AIStyle.anime);
     return image;
   }
   ```

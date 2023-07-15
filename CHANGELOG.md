@@ -33,3 +33,7 @@ fix first response
 ## 0.0.9
 
 fix the new URL
+
+## 0.1.0
+
+recreate all the functions and add new enum for resolution

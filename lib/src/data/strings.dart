@@ -5,16 +5,13 @@ final origin = 'https://editor.fusionbrain.ai';
 final referer = '$origin/';
 
 /// The [api] variable holds the URL of the API endpoint.
-final api = 'https://api.fusionbrain.ai/api/v1/text2image';
-
-/// The [checkQueueAPI] variable holds the URL of the API endpoint used to check the queue for the current request.
-final checkQueueAPI = '$api/inpainting/checkQueue';
+final api = 'https://api.fusionbrain.ai/web/api/v1/text2image';
 
 /// The [runAPI] variable holds the URL of the API endpoint used to run the image in painting process.
-final runAPI = '$api/run';
+final runAPI = '$api/run?model_id=1';
 
 /// The [pocketsAPI] variable holds the URL of the API endpoint used to generate pockets in the image.
-final pocketsAPI = '$api/generate/pockets';
+final status = '$api/status';
 
 /// The [userAgent] variable holds the user agent string sent with the HTTP request headers. It identifies the browser and operating system used to make the request.
 const userAgent =

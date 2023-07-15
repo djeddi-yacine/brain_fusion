@@ -14,10 +14,10 @@ void main() {
     /// Define the query and AI style
     String query = 'sukuna from jujutsu kaisen';
     AIStyle style = AIStyle.anime;
-
+    Resolution resolution = Resolution.r1x1;
     try {
       /// Call the runAI method with the required parameters
-      Uint8List image = await ai.runAI(query, style);
+      Uint8List image = await ai.runAI(query, style, resolution);
 
       /// Use the returned image data as needed
       print(image);

@@ -11,17 +11,16 @@ class Status {
   /// Creates an instance of the [Status] class with the [client] property as a required parameter.
   Status({required this.client});
 
-  /// The [success] property is used to check if the status check was successful.
-  bool success = false;
-
-  /// The [result] property holds the result of the status check.
-  String result = '';
-
   /// The [getStatus] function is used to send a request to the API to check the status of the query with the given [id].
-  /// Returns a [bool] value indicating whether the status check was successful or not.
-  Future<bool> getStatus(String id) async {
+  /// Returns a [Map] value indicating whether the status check was successful or not.
+  Future<Map<String, dynamic>> getStatus(String uuid) async {
+    if (uuid == '') {
+      /// If the [uuid] is empty, an exception is thrown with an appropriate error message.
+      throw Exception('there is no uuid');
+    }
+
     /// The [apiUrl] variable holds the Uri to be used for the status request.
-    final Uri apiUrl = Uri.parse('$pocketsAPI/$id/status');
+    final Uri apiUrl = Uri.parse('$status/$uuid');
 
     /// The [headers] variable is a map holding the required headers for the request.
     final headers = {
@@ -41,16 +40,20 @@ class Status {
 
     if (response.statusCode == 200) {
       /// If the response status code is 200, the [jsonResponse] variable is used to hold the decoded response body.
+
       final jsonResponse = jsonDecode(response.body);
 
-      /// The [success] property is updated with the value of the 'success' key from the [jsonResponse].
-      success = jsonResponse['success'] as bool;
+      /// The [status] property is updated with the value of the 'status' key from the [jsonResponse].
+      final String? status = jsonResponse['status'] as String?;
 
-      /// The [result] property is updated with the value of the 'result' key from the [jsonResponse].
-      result = jsonResponse['result'] as String;
+      /// The [image] property is updated with the value of the 'image' key from the [jsonResponse].
+      final List<dynamic>? image = jsonResponse['images'] as List<dynamic>?;
 
-      /// Return the [success] property.
-      return success;
+      /// The [error] property is updated with the value of the 'error' key from the [jsonResponse].
+      final String? error = jsonResponse['errorDescription'] as String?;
+
+      /// Return the data.
+      return {"status": status, "image": image, "error": error};
     } else if (response.statusCode != 200) {
       /// If the response status code is not 200, an exception is thrown with an appropriate error message.
       throw Exception('status code : ${response.statusCode}');

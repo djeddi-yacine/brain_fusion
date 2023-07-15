@@ -55,8 +55,8 @@ class AI {
       );
 
       /// Run first Endpoint
-      final String UUID = await _run.run(query, style, resolution);
-      if (UUID.isEmpty) {
+      final String uuid = await _run.run(query, style, resolution);
+      if (uuid.isEmpty) {
         /// If the [UUID] is empty, an exception is thrown.
         throw Exception('Failed To Get The UUID');
       }
@@ -70,7 +70,7 @@ class AI {
       Map<String, dynamic> data;
 
       do {
-        data = await _status.getStatus(UUID);
+        data = await _status.getStatus(uuid);
         status = data['status'];
         error = data['error'];
         image = data['image'];

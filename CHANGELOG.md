@@ -37,3 +37,7 @@ fix the new URL
 ## 0.1.0
 
 recreate all the functions and add new enum for resolution
+
+## 0.1.1
+
+fix the dart analyze

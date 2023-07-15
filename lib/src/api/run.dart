@@ -122,11 +122,11 @@ class Run {
       /// Decode the body.
       final jsonResponse = json.decode(response.body);
 
-      /// This [UUID] string is used to store the ID of the generated image.
-      final String? UUID = jsonResponse['uuid'] as String;
+      /// This [uuid] string is used to store the ID of the generated image.
+      final String? uuid = jsonResponse['uuid'] as String;
 
-      ///return [UUID]
-      return UUID ?? '';
+      ///return [uuid]
+      return uuid ?? '';
     } else if (response.statusCode != 201 || response.statusCode != 200) {
       /// Throw an exception if the response status code is not 200 or 201
       throw Exception('run code : ${response.statusCode}');

@@ -58,6 +58,8 @@ enum AIStyle {
   render3D, // 3D rendering style
   /// Cartoon style
   cartoon, // Cartoon
+  //Soviet cartoon
+  sovietCartoon,
   /// Studio photo style
   studioPhoto, // Studio photo style
   /// Portrait photo style
@@ -66,8 +68,6 @@ enum AIStyle {
   khokhlomaPainter, // Khokhloma style
   /// Christmas style
   christmas, // Christmas style
-  //reality, 4k, human style
-  reality, //Reality style
 }
 
 /// The [Resolution] enum is used to specify the different resolutions that can be used

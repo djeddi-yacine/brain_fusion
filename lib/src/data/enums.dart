@@ -66,6 +66,8 @@ enum AIStyle {
   khokhlomaPainter, // Khokhloma style
   /// Christmas style
   christmas, // Christmas style
+  //reality, 4k, human style
+  reality, //Reality style
 }
 
 /// The [Resolution] enum is used to specify the different resolutions that can be used

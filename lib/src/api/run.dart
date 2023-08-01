@@ -59,7 +59,9 @@ class Run {
       case AIStyle.khokhlomaPainter:
         return 'KHOKHLOMA';
       case AIStyle.christmas:
-        return 'CRISTMAS';
+        return 'CHRISTMAS';
+      case AIStyle.reality:
+        return 'RAW photo, best quality,realistic, photo-realistic, best quality ,masterpiece,an extremely delicate and beautiful, extremely detailed,2k wallpaper, Amazing, finely detail, 8k wallpaper,huge filesize , ultra-detailed, highres, extremely detailed,realistic, 8K, Ultra-High Definition, highest quality, ultra high resolution, (realistic:1.4), High quality texture,EasyNegative, paintings, sketches,extremely detailed eyes and face';
       default:
         return 'DEFAULT';
     }

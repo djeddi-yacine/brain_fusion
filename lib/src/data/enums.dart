@@ -58,6 +58,8 @@ enum AIStyle {
   render3D, // 3D rendering style
   /// Cartoon style
   cartoon, // Cartoon
+  //Soviet cartoon
+  sovietCartoon,
   /// Studio photo style
   studioPhoto, // Studio photo style
   /// Portrait photo style

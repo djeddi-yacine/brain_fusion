@@ -1,4 +1,6 @@
 /// Importing the 'dart:io' package to detect the platform, the 'brain_fusion' package for AI processing, the 'flutter/foundation.dart' package for debugging, and the 'flutter/material.dart' package for widget building.import 'dart:io' show Platform;
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io' show Platform;
 import 'package:brain_fusion/brain_fusion.dart';
 import 'package:flutter/foundation.dart';
@@ -17,13 +19,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
       /// Set the app theme to use Material 3
       theme: ThemeData(
         useMaterial3: true,
       ),
 
       /// Set the app home page to be the Test widget
-      home: const Test(title: 'Flutter Demo Home Page'),
+      home: const Test(title: 'Example'),
     );
   }
 }
@@ -53,7 +57,11 @@ class _TestState extends State<Test> {
   /// The [_generate] function to generate image data.
   Future<Uint8List> _generate(String query) async {
     /// Call the runAI method with the required parameters.
-    Uint8List image = await _ai.runAI(query, AIStyle.anime, Resolution.r1x1);
+    Uint8List image = await _ai.runAI(
+      query,
+      AIStyle.sovietCartoon,
+      Resolution.r1x1,
+    );
     return image;
   }
 
@@ -71,6 +79,7 @@ class _TestState extends State<Test> {
         ? MediaQuery.of(context).size.width
         : MediaQuery.of(context).size.height / 2;
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -79,10 +88,25 @@ class _TestState extends State<Test> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            TextField(
-              controller: _queryController,
-              decoration: const InputDecoration(
-                hintText: 'Enter query text...',
+            Container(
+              width: double.infinity,
+              height: 50,
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                border: Border.all(
+                  width: 0.5,
+                  color: Colors.grey.shade300,
+                ),
+              ),
+              child: TextField(
+                controller: _queryController,
+                decoration: InputDecoration(
+                  hintText: 'Enter query text...',
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(left: 8),
+                ),
               ),
             ),
             Padding(
@@ -98,13 +122,18 @@ class _TestState extends State<Test> {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             /// While waiting for the image data, display a loading indicator.
-                            return const CircularProgressIndicator();
+                            return Center(
+                              child: const CircularProgressIndicator(),
+                            );
                           } else if (snapshot.hasError) {
                             /// If an error occurred while getting the image data, display an error message.
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
                             /// If the image data is available, display the image using Image.memory().
-                            return Image.memory(snapshot.data!);
+                            return ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.memory(snapshot.data!),
+                            );
                           } else {
                             /// If no data is available, display a placeholder or an empty container.
                             return Container();

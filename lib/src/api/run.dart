@@ -60,6 +60,8 @@ class Run {
         return 'KHOKHLOMA';
       case AIStyle.christmas:
         return 'CRISTMAS';
+      case AIStyle.sovietCartoon:
+        return 'SOVIETCARTOON';
       default:
         return 'DEFAULT';
     }

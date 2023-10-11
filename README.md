@@ -1,3 +1,6 @@
+# Archived
+- Sorry. the website now have a sessions token technique that expire every minute so we can`t bypass it . now the package is archived .
+- 
 # Fusion Brain
 ![Image](https://fusionbrain.ai/static/fusion/meta/cover.png)
 
